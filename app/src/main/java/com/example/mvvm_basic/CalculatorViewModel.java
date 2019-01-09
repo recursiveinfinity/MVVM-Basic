@@ -5,10 +5,11 @@ import java.util.Observable;
 public class CalculatorViewModel extends Observable {
 
     private int result = 0;
+    private int numberOne = 0;
+    private int numberTwo = 0;
 
     public void add(String a, String b) {
-        int numberOne = Integer.valueOf(a);
-        int numberTwo = Integer.valueOf(b);
+        getNumbersFromInput(a, b);
 
         result = numberOne + numberTwo;
         setChanged();
@@ -16,12 +17,29 @@ public class CalculatorViewModel extends Observable {
     }
 
     public void subtract(String a, String b) {
-        int numberOne = Integer.valueOf(a);
-        int numberTwo = Integer.valueOf(b);
+        getNumbersFromInput(a, b);
 
         result = numberOne - numberTwo;
         setChanged();
         notifyObservers(result);
+    }
+
+    public void multiply(String a, String b) {
+        getNumbersFromInput(a, b);
+
+        result = numberOne * numberTwo;
+        setChanged();
+        notifyObservers(result);
+    }
+
+    private void getNumbersFromInput(String a, String b) {
+        try {
+            numberOne = Integer.valueOf(a);
+            numberTwo = Integer.valueOf(b);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+
+        }
     }
 
 

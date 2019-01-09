@@ -15,18 +15,16 @@ class MainActivity : AppCompatActivity(), Observer {
         val viewModel = CalculatorViewModel()
         viewModel.addObserver(this)
 
-        viewModel.deleteObserver(this)
-
         btnAdd.setOnClickListener {
             viewModel.add(etNumberOne.text.toString(), etNumberTwo.text.toString())
         }
 
         btnSubtract.setOnClickListener {
-
+            viewModel.subtract(etNumberOne.text.toString(), etNumberTwo.text.toString())
         }
 
         btnMultiply.setOnClickListener {
-
+            viewModel.multiply(etNumberOne.text.toString(), etNumberTwo.text.toString())
         }
 
     }
